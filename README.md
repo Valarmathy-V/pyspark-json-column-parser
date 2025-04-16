@@ -1,2 +1,20 @@
-# pyspark-json-column-parser
-Flattening JSON array string columns into structured format using PySpark on Databricks
+# PySpark JSON Array Column Parser
+
+This script transforms JSON stringified array columns in a PySpark DataFrame into structured columns.
+
+### 🔧 Technologies Used
+- PySpark
+- Databricks
+- JSON
+- Dynamic DataFrame transformation
+
+### 💡 What It Does
+- Detects stringified array columns
+- Converts them into arrays using `from_json`
+- Dynamically expands elements into new columns (e.g., `col_1`, `col_2`, etc.)
+- Maintains original columns alongside exploded values
+
+### 📂 Usage
+```python
+spark.read.csv(...)  # load your DataFrame
+# Run the script above
