@@ -6,6 +6,7 @@ import distutils
 import csv
 import sqlite3
 from sqlalchemy import create_engine
+import datetime
 
 
 from pyspark.sql import SparkSession
@@ -58,10 +59,11 @@ finaldf = tmpdf.select(*final_columns)
 pandas_df = finaldf.toPandas()
 
 # Step 5: saving as CSV
-pandas_df.to_csv("D:/Data_Engg/JEH/output/resultdf4.csv", index=False, sep=',')
+time=datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+pandas_df.to_csv(f"D:/Data_Engg/JEH/output/resultdf_{time}.csv", index=False, sep=',')
 
 # Step 6:  save as table into pg DB
 engine = create_engine("postgresql://postgres:postgres@localhost:5432/postgres")
 
-pandas_df.to_sql("splitted_data4", engine, index=False, if_exists="replace") 
+pandas_df.to_sql(f"splitted_data_{time}", engine, index=False, if_exists="replace") 
 
