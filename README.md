@@ -14,7 +14,3 @@ This script transforms JSON stringified array columns in a PySpark DataFrame int
 - Dynamically expands elements into new columns (e.g., `col_1`, `col_2`, etc.)
 - Maintains original columns alongside exploded values
 
-### 📂 Usage
-```python
-spark.read.csv(...)  # load your DataFrame
-# Run the script above
